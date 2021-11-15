@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import business.Freizeitbad;
 import business.FreizeitbaederModel;
 import javafx.event.ActionEvent;
@@ -158,7 +160,25 @@ public class FreizeitbaederView {
 	private void schreibeFreizeitbaederInDatei(String typ) {
 		// Aufruf des Controls zum Schreiben des Freizeitbads in die
 		// Datei des vorgegebenen Typs.
-		
+		if (typ == "csv") {
+			try {
+				this.fzbModel.schreibeFreizeitbaederInCsvDatei();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if ( typ == "txt") {
+			try {
+				this.fzbModel.schreibeFreizeitbaederInTxtDatei();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			System.out.println("[!!!] Invalid file export format! ");
+		}
 	
 	}
 	

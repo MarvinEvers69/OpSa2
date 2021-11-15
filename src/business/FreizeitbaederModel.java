@@ -4,13 +4,21 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import file.ConcreteCSVCreator;
+import file.ConcreteCSVProduct;
+import file.ConcreteTXTCreator;
+import file.ConcreteTXTProduct;
+import file.Creator;
+import file.Product;
+
+
 
 public class FreizeitbaederModel {
 
     private Freizeitbad freizeitbad;
 
     
-    
+   /* 
 	public void schreibeFreizeitbaederInCsvDatei() {
 		// Throw exception
 		
@@ -23,6 +31,28 @@ public class FreizeitbaederModel {
 			e.printStackTrace();
 		}
 	}
+	*/
+    
+    public void schreibeFreizeitbaederInCsvDatei() throws IOException {
+    	System.out.println("[DBG] writing CSV.");
+    	Creator c = new ConcreteCSVCreator();
+    	//Product p = new ConcreteCSVProduct();
+    	
+    	Product writer = c.factoryMethod();
+    	writer.fuegeInDateiHinzu(this.freizeitbad);
+    	writer.schliesseDatei();
+    }
+    
+    public void schreibeFreizeitbaederInTxtDatei() throws IOException {
+    	System.out.println("[DBG] writing TXT.");
+    	Creator c = new ConcreteTXTCreator();
+    	//Product p = new ConcreteCSVProduct();
+    	
+    	Product writer = c.factoryMethod();
+    	writer.fuegeInDateiHinzu(this.freizeitbad);
+    	writer.schliesseDatei();
+    }
+    
 
 
 

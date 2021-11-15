@@ -27,6 +27,12 @@ public class FreizeitbaederControl {
 				// Typs und Ausgabe der Meldung
 				fzbModel.schreibeFreizeitbaederInCsvDatei();
 			}
+			else if ("txt".contentEquals(typ)) {
+				// Aufruf des Models zum Schreiben des
+				// Freizeitbads in die Datei des vorgegebenen
+				// Typs und Ausgabe der Meldung
+				fzbModel.schreibeFreizeitbaederInTxtDatei();
+			}
 			else {
 				fzbView.zeigeInformationsfensterAn("Noch nicht implementiert!");
 			}
